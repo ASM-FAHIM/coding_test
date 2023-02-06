@@ -12,6 +12,7 @@ class TestController extends GetxController {
       if(responseTest.statusCode == 200){
         test = testModelFromJson(responseTest.body);
         print('Test api values are: ${responseTest.body}');
+        print('Test api values are: ${test!.data.length}');
         isLoading(false);
       }else{
         print('Error occurred: ${responseTest.statusCode}');
