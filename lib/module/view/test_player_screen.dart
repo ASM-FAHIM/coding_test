@@ -73,7 +73,7 @@ class _TestPlayerScreenState extends State<TestPlayerScreen> {
                             child: Container(
                               height: 345,
                               width: 370,
-                              padding: const EdgeInsets.all(20.0),
+                              padding: const EdgeInsets.all(12.0),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30.0),
                                 color: AppColor.containerColor
@@ -87,12 +87,14 @@ class _TestPlayerScreenState extends State<TestPlayerScreen> {
                                       BigText(text: '${testController.test!.data[index].id}'),
                                     ],
                                   ),
-                                  BigText(text: DateFormat.jm().format(DateTime.parse(testController.test!.data[index].createdAt.toString())), size: 15,),
+                                  SizedBox(height: 10,),
+                                  SmallText(text: DateFormat.jm().format(DateTime.parse(testController.test!.data[index].createdAt.toString())), color: Colors.black,),
+                                  SizedBox(height: 10,),
                                   Container(
                                     height: 268,
                                     width: 350,
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20.0),
+                                      borderRadius: BorderRadius.circular(30.0),
                                       color: AppColor.loadingColor
                                     ),
                                   ),
