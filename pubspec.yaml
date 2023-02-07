@@ -39,6 +39,8 @@ dependencies:
   get: ^4.6.5
   http: ^0.13.5
   intl: ^0.18.0
+  chewie: ^1.4.0
+  video_player: ^2.5.1
 
 dev_dependencies:
   flutter_test:
