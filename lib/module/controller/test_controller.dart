@@ -5,6 +5,14 @@ import 'package:http/http.dart' as http;
 class TestController extends GetxController {
   RxBool isLoading = false.obs;
   TestModel? test;
+
+
+  @override
+  void onInit() {
+    fetchTestApi();
+    super.onInit();
+  }
+
   Future<void> fetchTestApi() async{
     try{
       isLoading(true);
