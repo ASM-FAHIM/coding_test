@@ -1,10 +1,12 @@
+import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:task_app/module/controller/test_controller.dart';
 import 'package:task_app/utils/colors.dart';
+import 'package:task_app/utils/dimensions.dart';
 import 'package:task_app/widget/big_text.dart';
 import 'package:get/get.dart';
-
+import 'package:video_player/video_player.dart';
 import '../../widget/small_text.dart';
 
 
@@ -71,8 +73,8 @@ class _TestPlayerScreenState extends State<TestPlayerScreen> {
                           return Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Container(
-                              height: 345,
-                              width: 370,
+                              height: Dimensions.height345,
+                              width: Dimensions.width370,
                               padding: const EdgeInsets.all(12.0),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30.0),
@@ -87,15 +89,25 @@ class _TestPlayerScreenState extends State<TestPlayerScreen> {
                                       BigText(text: '${testController.test!.data[index].id}'),
                                     ],
                                   ),
-                                  SizedBox(height: 10,),
+                                  SizedBox(height: Dimensions.height10,),
                                   SmallText(text: DateFormat.jm().format(DateTime.parse(testController.test!.data[index].createdAt.toString())), color: Colors.black,),
-                                  SizedBox(height: 10,),
+                                  SizedBox(height: Dimensions.height10,),
                                   Container(
-                                    height: 268,
-                                    width: 350,
+                                    height: Dimensions.height268,
+                                    width: Dimensions.width350,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(30.0),
-                                      color: AppColor.loadingColor
+                                      color: Colors.transparent
+                                    ),
+                                    clipBehavior: Clip.hardEdge,
+                                    child: Chewie(
+                                      controller: ChewieController(
+                                        videoPlayerController: VideoPlayerController.network(testController.test!.data[index].videoUrl),
+                                        autoInitialize: true,
+                                        autoPlay: false,
+                                        looping: false,
+                                        aspectRatio: 10.6/9,
+                                      ),
                                     ),
                                   ),
                                   //SmallText(text: '${testController.test!.data[index].videoUrl}',),
@@ -115,3 +127,4 @@ class _TestPlayerScreenState extends State<TestPlayerScreen> {
     );
   }
 }
+
